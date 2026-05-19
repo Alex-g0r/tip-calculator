@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор чаевых</title>
+</head>
+<body>
+        <p>
+            <label for="summa">Сумма заказа:</label>
+            <input type="number" id="summa" placeholder="Введите значение">
+        </p>
+        <p>
+            <label for="amount">Процент чаевых:</label>
+            <input type="number" id="amount" placeholder="Введите значение">
+        </p>
+        <p>
+            <label for="people">Кол-во людей:</label>
+            <input type="number" id="people" placeholder="Введите значение">
+            <button name="send">Тык!</button>
+        </p>
+
+
+    <script>
+        function sendForm(e){
+        
+            // получаем значение поля key
+            const keyBox_summa = document.querySelector('#summa');
+            const keyBox_amount = document.querySelector('#amount');
+            const keyBox_people = document.querySelector('#people');
+            let summa = Number(keyBox_summa.value);
+            let amount = Number(keyBox_amount.value);
+            let people = Number(keyBox_people.value);
+
+            let tips = summa * (amount/100)
+            let summa_with_tips = summa+tips
+            alert(`Сумма к оплате ${summa_with_tips}\n`+
+                `Оплата на персону ${summa_with_tips/people}\n`+
+                `Общая сумма чаевых ${tips}\n`+
+                `Чаевые на персону ${tips/people}\n`
+            );
+        }
+        
+        const sendButton = document.querySelector('button');
+        sendButton.addEventListener("click", sendForm);
+    </script>
+</body>
+</html>
